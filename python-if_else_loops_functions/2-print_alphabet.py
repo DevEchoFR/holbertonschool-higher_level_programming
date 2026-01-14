@@ -1,5 +1,3 @@
 #!/usr/bin/python3
-import string
-
-for atoz in string.ascii_lowercase:
-    print(atoz, end="")
+for letter in range(97, 123):
+    print("{}".format(char(letter)), end="")
