@@ -1,10 +1,9 @@
-#!/usr/bin/python3
 def safe_print_list(my_list=[], x=0):
     count = 0
 
-    for items in range(x):
+    for number in range(x):
         try:
-            print(items, end="")
+            print(my_list[number], end="")
             count += 1
         except IndexError:
             break
