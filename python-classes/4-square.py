@@ -22,7 +22,7 @@ class Square:
         """
         Sets the size.
         """
-        if not isinstance(value, int):
+        if type(value) is not int:
             raise TypeError("size must be an integer")
 
         if value < 0:
