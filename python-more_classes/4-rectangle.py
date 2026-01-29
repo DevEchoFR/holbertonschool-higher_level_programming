@@ -51,17 +51,3 @@ class Rectangle:
 
     def __repr__(self):
         return "Rectangle({}, {})".format(self.__width, self.__height)
-
-
-Rectangle = __import__('4-rectangle').Rectangle
-
-r1 = Rectangle(3, 2)
-print("AREA:", r1.area())          # 6
-print("PERIM:", r1.perimeter())    # 10
-print(str(r1))                     # ###\n###
-print(repr(r1))                    # Rectangle(3, 2)
-
-r2 = eval(repr(r1))
-print(r1 is r2)                    # False
-print(r1 == r2)                    # likely False unless you define __eq__ (you don't)
-print(str(r2))                     # same drawing
