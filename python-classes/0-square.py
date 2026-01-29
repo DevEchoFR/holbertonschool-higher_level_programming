@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""Docstring for python-classes.0-square"""
-
+"""This module defines a Square class used to represent a basic square shape."""
 class Square:
-    """Docstring for Square"""
+    """This class represents a square without any defined attributes or behavior."""
     pass
