@@ -1,6 +1,9 @@
 #!/usr/bin/python3
+"""Docstring for python-more_classes.6-rectangle"""
+
 
 class Rectangle:
+    """Docstring for Rectangle"""
     number_of_instances = 0
 
     def __init__(self, width=0, height=0):
