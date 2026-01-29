@@ -1,6 +1,9 @@
 #!/usr/bin/python3
+"""Docstring for python-more_classes.7-rectangle"""
+
 
 class Rectangle:
+    """Docstring for Rectangle"""
     number_of_instances = 0
     print_symbol = "#"
 
