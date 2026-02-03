@@ -1,0 +1,18 @@
+#!/usr/bin/python3
+"""
+Test file for the MyList class.
+"""
+
+MyList = __import__('my_list').MyList
+
+if __name__ == "__main__":
+    my_list = MyList([3, 1, 4, 2])
+
+    print("Original list:")
+    print(my_list)
+
+    print("Sorted list:")
+    my_list.print_sorted()
+
+    print("After calling print_sorted:")
+    print(my_list)
