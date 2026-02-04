@@ -22,12 +22,4 @@ class MyList(list):
         The original list must NOT be modified.
         All elements are assumed to be integers.
         """
-
-        # Step 1: Create a copy of the current list
-        copied_list = self.copy()
-
-        # Step 2: Sort the copied list
-        copied_list.sort()
-
-        # Step 3: Print the sorted list
-        print(copied_list)
+        print(sorted(self))
