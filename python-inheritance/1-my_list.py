@@ -9,7 +9,7 @@ adds a method to print the list in sorted order.
 
 class MyList(list):
     """
-    MyList inherits from the built-in list class.
+    MyList inherits the built-in list class.
 
     It provides an additional method to display
     the list elements sorted in ascending order.
