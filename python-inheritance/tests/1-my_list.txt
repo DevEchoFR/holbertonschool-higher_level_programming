@@ -1,18 +1,35 @@
-#!/usr/bin/python3
-"""
-Test file for the MyList class.
-"""
+import :
+    >>> MyList = __import__('1-my_list').MyList
 
-MyList = __import__('my_list').MyList
+create empty list :
+    >>> my_list = MyList()
+    >>> print(my_list)
+    []
 
-if __name__ == "__main__":
-    my_list = MyList([3, 1, 4, 2])
+add elements :
+    >>> my_list.append(1)
+    >>> my_list.append(4)
+    >>> my_list.append(2)
+    >>> my_list.append(3)
+    >>> my_list.append(5)
+    >>> print(my_list)
+    [1, 4, 2, 3, 5]
 
-    print("Original list:")
-    print(my_list)
+print sorted list :
+    >>> my_list.print_sorted()
+    [1, 2, 3, 4, 5]
 
-    print("Sorted list:")
-    my_list.print_sorted()
+check original list not modified :
+    >>> print(my_list)
+    [1, 4, 2, 3, 5]
 
-    print("After calling print_sorted:")
-    print(my_list)
+list with one element :
+    >>> one = MyList()
+    >>> one.append(42)
+    >>> one.print_sorted()
+    [42]
+
+empty list print_sorted :
+    >>> empty = MyList()
+    >>> empty.print_sorted()
+    []
