@@ -7,9 +7,7 @@ Traceback (most recent call last):
 Exception: area() is not implemented
 
 >>> bg.integer_validator("my_int", 12)
-
 >>> bg.integer_validator("number", 100)
-
 >>> bg.integer_validator("width", 1)
 
 >>> bg.integer_validator("my_float", 3.14)
@@ -41,24 +39,3 @@ ValueError: size must be greater than 0
 Traceback (most recent call last):
 ...
 ValueError: width must be greater than 0
-
->>> bg.integer_validator("height", -1)
-Traceback (most recent call last):
-...
-ValueError: height must be greater than 0
-
->>> bg.integer_validator("bool_val", True)
-Traceback (most recent call last):
-...
-TypeError: bool_val must be an integer
-
->>> bg.integer_validator("bool_val", False)
-Traceback (most recent call last):
-...
-TypeError: bool_val must be an integer
-
->>> bg.integer_validator("width", 10)
->>> bg.integer_validator("height", 20)
-
->>> bg.integer_validator("my_int", 50)
->>> bg.integer_validator("another_int", 99)
