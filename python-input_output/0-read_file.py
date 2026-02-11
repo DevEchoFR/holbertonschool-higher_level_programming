@@ -1,4 +1,4 @@
-#!usr/bin/python3
+#!/usr/bin/python3
 """
 This module provides functionality for reading and displaying
 the contents of a UTF-8 text file to standard output.
@@ -15,7 +15,5 @@ def read_file(filename=""):
     Args:
         filename (str): The name of the file to read.
     """
-    with open(filename, mode="r") as text:
-        content = text.read()
-
-        print(content)
+    with open(filename, mode="r", encoding="utf-8") as text:
+        print(text.read(), end="")
