@@ -1,3 +1,4 @@
+#!usr/bin/python3
 """
 This module provides functionality for reading and displaying
 the contents of a UTF-8 text file to standard output.
