@@ -1,14 +1,7 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 task_03_http_server.py
-
-A simple API using Python's built-in http.server.
-Routes:
-  GET /       -> plain text greeting
-  GET /data   -> JSON sample data
-  GET /status -> plain text "OK"
-  GET /info   -> JSON metadata
-  else        -> 404 Endpoint not found
+A simple API using Python's built-in http.server module.
 """
 
 import json
@@ -16,53 +9,67 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 
 
 class SimpleAPIHandler(BaseHTTPRequestHandler):
-    def _send_text(self, status_code: int, body: str) -> None:
-        data = body.encode("utf-8")
+    """Request handler for our simple API."""
+
+    def _send_text(self, status_code: int, message: str) -> None:
+        """Send a plain text response."""
+        body = message.encode("utf-8")
         self.send_response(status_code)
         self.send_header("Content-Type", "text/plain; charset=utf-8")
-        self.send_header("Content-Length", str(len(data)))
+        self.send_header("Content-Length", str(len(body)))
         self.end_headers()
-        self.wfile.write(data)
+        self.wfile.write(body)
 
     def _send_json(self, status_code: int, payload: dict) -> None:
-        body = json.dumps(payload).encode("utf-8")
+        """Send a JSON response."""
+        body_str = json.dumps(payload)
+        body = body_str.encode("utf-8")
         self.send_response(status_code)
         self.send_header("Content-Type", "application/json; charset=utf-8")
         self.send_header("Content-Length", str(len(body)))
         self.end_headers()
         self.wfile.write(body)
 
-    def do_GET(self) -> None:
-        # Basic routing based on the request path
+    def do_GET(self):
+        """Handle GET requests."""
         if self.path == "/":
             self._send_text(200, "Hello, this is a simple API!")
-        elif self.path == "/data":
-            self._send_json(200, {"name": "John", "age": 30, "city": "New York"})
-        elif self.path == "/status":
+            return
+
+        if self.path == "/status":
             self._send_text(200, "OK")
-        elif self.path == "/info":
-            self._send_json(
-                200,
-                {"version": "1.0", "description": "A simple API built with http.server"},
-            )
-        else:
-            self._send_text(404, "Endpoint not found")
+            return
 
-    # Optional: reduce noisy default logging (comment out if you want logs)
-    def log_message(self, format_: str, *args) -> None:
-        pass
+        if self.path == "/data":
+            data = {"name": "John", "age": 30, "city": "New York"}
+            self._send_json(200, data)
+            return
+
+        if self.path == "/info":
+            info = {"version": "1.0", "description": "A simple API built with http.server"}
+            self._send_json(200, info)
+            return
+
+        # Undefined endpoint
+        self._send_text(404, "Endpoint not found")
+
+    # Make server output cleaner (optional)
+    def log_message(self, format, *args):
+        return
 
 
-def run(host: str = "localhost", port: int = 8000) -> None:
-    server = HTTPServer((host, port), SimpleAPIHandler)
-    print(f"Serving on http://{host}:{port}")
+def run(server_class=HTTPServer, handler_class=SimpleAPIHandler, port=8000):
+    server_address = ("", port)
+    httpd = server_class(server_address, handler_class)
+    print(f"Serving on http://localhost:{port}")
     try:
-        server.serve_forever()
+        httpd.serve_forever()
     except KeyboardInterrupt:
         pass
     finally:
-        server.server_close()
+        httpd.server_close()
         print("\nServer stopped.")
+
 
 
 if __name__ == "__main__":
