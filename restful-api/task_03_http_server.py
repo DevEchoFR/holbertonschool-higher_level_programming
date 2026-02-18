@@ -49,8 +49,8 @@ class SimpleAPIHandler(BaseHTTPRequestHandler):
             self._send_text(404, "Endpoint not found")
 
     # Optional: reduce noisy default logging (comment out if you want logs)
-    def log_message(self, format: str, *args) -> None:
-        return
+    def log_message(self, format_: str, *args) -> None:
+        pass
 
 
 def run(host: str = "localhost", port: int = 8000) -> None:
