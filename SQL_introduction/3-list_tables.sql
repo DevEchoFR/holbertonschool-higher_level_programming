@@ -1,3 +1,2 @@
--- Script that lists all tables of the database hbtn_0c_0
-USE hbtn_0c_0;
+-- Lists all tables of the database passed as argument
 SHOW TABLES;
